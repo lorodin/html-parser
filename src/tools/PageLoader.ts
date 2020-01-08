@@ -1,6 +1,6 @@
 import * as request from 'request';
 import { IRequestOptions } from "./types";
-
+import * as tunnel from 'tunnel';
 
 /**
  * Элемент очереди запросов
@@ -70,21 +70,25 @@ export default class PageLoader
             {
                 return req.callback( null, PageLoader.pageLoaded[req.url] );
             }
-            request( req.url, 'utf8', ( err, resp, body ) => {
-                setTimeout( this.runRequests, this.options.timout );
-
-                if ( err )
+            request.get(
                 {
-                    return req.callback( err );
-                }
+                    url: req.url
+                },
+                ( err, resp, body ) => {
+                    setTimeout( this.runRequests, this.options.timout );
+                    if ( err )
+                    {
+                        return req.callback( err );
+                    }
 
-                if ( this.options.cached )
-                {
-                    PageLoader.pageLoaded[req.url] = body;
-                }
+                    if ( this.options.cached )
+                    {
+                        PageLoader.pageLoaded[req.url] = body;
+                    }
 
-                return req.callback( null, body );
-            })
+                    return req.callback( null, body );
+                }
+            );
         }
     }
 
