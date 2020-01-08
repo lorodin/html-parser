@@ -1,24 +1,6 @@
 import * as request from 'request';
+import { IRequestOptions } from "./types";
 
-/**
- * Опции для запроса
- */
-export interface IRequestOptions {
-    /**
-     * Кодировка
-     */
-    encoding?:string;
-
-    /**
-     * Задержка между запросами в миллисекудах, по умолчанию 500мс
-     */
-    timout?: number;
-
-    /**
-     * Кэшировать результаты страниц или нет
-     */
-    cached?:boolean;
-}
 
 /**
  * Элемент очереди запросов
@@ -26,22 +8,6 @@ export interface IRequestOptions {
 interface IRequestQueueItem {
     url: string,
     callback: ( err?: any, body?: any ) => void;
-}
-
-/**
- * Результат запроса
- */
-export interface IPageResponse {
-    /**
-     * URL-адрес страницы, куда был отправлен запрос
-     */
-    url: string,
-
-    /**
-     * cheerio.load
-     * @param selector
-     */
-    body: string
 }
 
 /**
@@ -90,14 +56,6 @@ export default class PageLoader
         this.urls = urls;
         this.requests = [];
         this.runRequests = this.runRequests.bind( this );
-    }
-
-    /**
-     * Очищает кэш
-     */
-    public clearCache()
-    {
-        PageLoader.pageLoaded = {};
     }
 
     /**
@@ -152,11 +110,10 @@ export default class PageLoader
                         {
                             progressCb( count++, promises.length );
                         }
-                        const result:IPageResponse = {
+                        res({
                             url: url,
                             body: body
-                        };
-                        res( result );
+                        });
                     }
                 });
             }));

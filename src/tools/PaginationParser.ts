@@ -1,12 +1,11 @@
 import CollectionModelParser from "./CollectionModelParser";
-import { IRequestOptions } from "./PageLoader";
-import { ISelectorInfo } from "./Parser";
 import { joinUrls } from "./custom";
+import { IRequestOptions, ISelectorInfo } from "./types";
 
 /**
  * Парсит URL страниц со страницы с паджинацией
  */
-export class PaginationParser {
+export default class PaginationParser {
     private currentPage: string;
     private readonly siteUrl?: string;
     private readonly options?:IRequestOptions;

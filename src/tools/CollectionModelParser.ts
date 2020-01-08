@@ -1,6 +1,6 @@
-import PageLoader, { IRequestOptions } from "./PageLoader";
-import { IModelParserInfo, IModelParserResult, parseCollection } from "./Parser";
-import { IParser } from "./types";
+import PageLoader from "./PageLoader";
+import { IModelParserInfo, IModelParserResult, IParser, IRequestOptions } from "./types";
+import { parseCollection } from "./custom";
 
 /**
  * Парсит страницы со списками в массив моделей

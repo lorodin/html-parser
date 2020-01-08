@@ -1,6 +1,5 @@
-import PageLoader, { IRequestOptions } from "./PageLoader";
-import { IModelParserResult } from "./Parser";
-import { IParser } from "./types";
+import PageLoader from "./PageLoader";
+import { IModelParserResult, IParser, IRequestOptions } from "./types";
 
 export default class MultiPagesParser implements IParser {
 

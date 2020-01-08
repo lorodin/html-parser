@@ -1,12 +1,12 @@
 {
   "name": "html-simple-parser",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "examples.js",
   "license": "MIT",
   "description" : "Universal html parser",
   "scripts": {
     "build": "tsc",
-    "start": "tsc && node ."
+    "start": "tsc && node examples.js"
   },
   "repository": {
     "type": "git",
