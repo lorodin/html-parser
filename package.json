@@ -1,25 +1,23 @@
 {
-  "name": "html-parser",
+  "name": "html-simple-parser",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "description": "Universal html parser",
+  "description" : "Universal html parser",
   "scripts": {
     "build": "tsc",
     "start": "tsc && node ."
   },
   "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lorodin/html-parser.git"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "iconv-lite": "^0.5.0",
     "node-emoji": "^1.10.0",
-    "npm": "^6.13.1",
-    "reflect-metadata": "^0.1.13",
     "request": "^2.88.0",
     "ts-node": "^8.5.4",
-    "tsc-watch": "^4.0.0",
-    "tsyringe": "^4.0.1",
     "typescript": "^3.7.2"
   },
   "devDependencies": {
